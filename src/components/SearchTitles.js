@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
  
 export default function SearchTitles() {
     const [apiData, setApiData] = useState([])
@@ -39,7 +40,9 @@ export default function SearchTitles() {
                    if (book.cover_i && book.isbn) {
                    return (
                        <div key={index}>
-                           <img alt="cover" src={`http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}></img>
+                           <Link to={`/book/${book.isbn[0]}`}>
+                                <img alt="cover" src={`http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}></img>
+                           </Link>
                            <p>{book.title}</p>
                        </div>
                    )
